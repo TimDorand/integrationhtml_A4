@@ -1,0 +1,12 @@
+@mixin background($path, $first, $second, $size) {
+  background: url($path) $first $second;
+  height:100%;
+  background-size: $size;
+
+}
+@mixin background_colored($color, $path, $first, $second, $size) {
+  background: $color url($path) $first $second;
+  height:100%;
+  background-size: $size;
+
+}

@@ -1,0 +1,373 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+//@import "compass/reset";
+@import "compass/utilities/sprites";
+@import "compass/reset";
+@import "mixins";
+@import "variables";
+@import "icons/*.png";
+
+@include all-icons-sprites(true);
+
+/* SOMMAIRE */
+
+/*
+
+- basics
+- text
+- background
+- margin
+- padding
+- width
+- media queries
+
+*/
+
+/* Basics */
+
+body {
+  font-family: Myriad Pro, Arial, serif;
+  margin: 0px;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+}
+
+.box {
+  box-sizing: border-box;
+}
+
+.section {
+  min-height: 400px;
+  display: flex;
+}
+.wrap{
+  flex-wrap: wrap;
+}
+
+h2 {
+  font-size: 4em;
+}
+
+h3 {
+  font-size: 3em;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 300;
+}
+
+header ul li {
+  display: inline;
+  list-style: none;
+}
+
+.float_right {
+  float: right;
+}
+
+header {
+  padding: 40px;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+/* Texts */
+
+.small {
+  font-size: 0.8em;
+}
+
+.text_center {
+  text-align: center;
+}
+
+@each $key, $value in $theme-colors {
+  .text_#{$key} {
+    color: $value;
+  }
+  .text_grey {
+    color: grey;
+  }
+  .text_red {
+    color: red;
+  }
+}
+
+.text_big {
+  font-size: 3em;
+}
+
+/* Buttons */
+
+.btn_transparent {
+  border-radius: 20px;
+  border: 1px solid grey;
+  background: none;
+  padding: 10px;
+}
+
+.btn_white {
+  border-radius: 20px;
+  border: 1px solid grey;
+  background: white;
+  padding: 10px;
+}
+
+/* Backgrounds */
+
+.grey_bg {
+  height: 100%;
+  background-color: #eff2f6;
+}
+
+.red_bg {
+  height: 100%;
+  background: #ff343d;
+}
+
+.logo {
+  height: 20px;
+}
+
+.black_bg {
+  @include background_colored(#232323, '../img/drone_flat.png', right, no-repeat, cover);
+}
+
+.second_section_bg {
+  flex-grow: 1;
+  @include background('../img/second_section_bg.png', center, no-repeat, cover);
+}
+
+.telecommande {
+  @include background('../img/telecommande.png', center, no-repeat, cover);
+}
+
+.right_drone {
+  @include background('../img/drone_transparent.png', right, no-repeat, inherit);
+}
+
+.see_bg {
+  @include background('../img/start_your_journey.png', center, no-repeat, cover);
+}
+
+.phantom_bg {
+  @include background('../img/phantom.png', center, no-repeat, cover);
+}
+
+.under_bg {
+  background: url('../img/drone_under.png'), url('../img/onde.png');
+  background-color: #f9fafc;
+  @include background('../img/drone_under.png', center, no-repeat, cover);
+}
+
+/* Paddings & margins */
+
+@for $i from 1 through 40 {
+  .p-t-#{$i * 5} {
+    padding-top: 5px * $i;
+  }
+  .p-l-#{$i * 5} {
+    padding-left: 5px * $i;
+  }
+  .p-r-#{$i * 5} {
+    padding-right: 5px * $i;
+  }
+  .p-b-#{$i * 5} {
+    padding-bottom: 5px * $i;
+  }
+
+  .m-t-#{$i * 5} {
+    margin-top: 5px * $i;
+  }
+  .m-l-#{$i * 5} {
+    margin-left: 5px * $i;
+  }
+  .m-r-#{$i * 5} {
+    margin-right: 5px * $i;
+  }
+  .m-b-#{$i * 5} {
+    margin-bottom: 5px * $i;
+  }
+
+  .m-t-#{$i * 5}-p {
+    margin-top: 5% * $i;
+  }
+  .m-l-#{$i * 5}-p {
+    margin-left: 5% * $i;
+  }
+  .m-r-#{$i * 5}-p {
+    margin-right: 5% * $i;
+  }
+  .m-b-#{$i * 5}-p {
+    margin-bottom: 5% * $i;
+  }
+
+}
+
+/* Heigts */
+
+// h-100{ height: 100px; }
+// h-2000{ height: 2000px; }
+
+@for $i from 1 through 100 {
+  .w-#{$i} {
+    //width: 1% * $i;
+    flex-basis:1% * $i;
+  }
+  .w-#{$i}-p {
+    //width: 1% * $i;
+    width:1% * $i;
+  }
+}
+
+@each $key, $value in $grid-breakpoints {
+  @media (min-width: $value) {
+    @for $i from 1 through 20 {
+      .#{$key}-h-#{$i * 100} {
+        height: 100px * $i;
+      }
+    }
+  }
+  @media (max-width: $value) {
+
+    @if $key == 'xs' {
+      @for $i from 1 through 100 {
+        .w-#{$i} {
+          //width: 100%;
+          flex: 0 0 100%;
+        }
+      }
+    }
+    @if $key == 'md' {
+      @for $i from 1 through 100 {
+        .w-#{$i} {
+          //width: 100%;
+          flex: 0 0 100%;
+        }
+      }
+    }
+  }
+}
+
+.h-100-p {
+  height: 100%;
+}
+
+.color_green {
+  border-radius: 40px;
+  padding: 20px 40px 20px 40px;
+  color: #419f84;
+
+  width: 150px;
+  text-align: center;
+}
+
+.flex-vertical-middle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.flex-vertical {
+  display: flex;
+  align-items: center;
+}
+
+.rotate_270 {
+  -ms-transform: rotate(270deg); /* IE 9 */
+  -webkit-transform: rotate(270deg); /* Chrome, Safari, Opera */
+  transform: rotate(270deg);
+}
+
+.no_border {
+  border: none;
+}
+
+.text_scrolldown {
+  width: 200px;
+  margin-left: 100px;
+  font-size: 0.7em;
+
+  margin-top: -296px;
+}
+
+.drone_pic {
+  height: 511px;
+  margin-left: -407px;
+}
+
+@media (max-width: 1000px) {
+  .drone_pic {
+    height: 411px;
+    margin-left: -328px;
+  }
+}
+
+@media (max-width: 600px) {
+  .drone_pic {
+    height: 211px;
+    margin-left: -128px;
+  }
+}
+
+.filtre_noir {
+  background: rgba(0, 0, 0, 0.3);
+  height: 100%;
+}
+
+.bullet_point_vertical ul, .bullet_point_vertical li {
+  list-style-type: disc;
+  font-size: 25px;
+}
+
+.intro_all{
+  height: 100px;
+  overflow: scroll;
+}
+
+/* Animation fade in move down */
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-100px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+}

@@ -1,0 +1,19 @@
+$white: #fff;
+$black: #000;
+$red: #ff3631;
+$gray: #a9a9a9;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);
+
+$theme-colors: (
+  white: $white,
+  black: $black,
+  red: $red,
+  gray: $gray,
+);
