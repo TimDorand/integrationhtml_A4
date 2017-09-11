@@ -42,3 +42,4 @@ node_modules/
 .idea
 css/
 .sass-cache/
+js/app.js
