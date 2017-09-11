@@ -31,7 +31,7 @@ gulp.task('sass', function () {
 
 gulp.task('watch', function () {
     gulp.watch('./sass/**/*.scss', ['sass'])
-    // gulp.watch('./js/**/*.js', ['script'])
+    gulp.watch('./js/**/*.js', ['script'])
 })
 
 gulp.task('clean', function () {
